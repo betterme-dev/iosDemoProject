@@ -1,0 +1,14 @@
+//
+//  EmailAccountResponse.swift
+//  BMRequests
+//
+//  Created by Andrey Bogushev on 07.07.2022.
+//  Copyright © 2022 BetterMe. All rights reserved.
+//
+
+import Foundation
+
+struct EmailAccountResponse: Decodable {
+    let email: String
+    let confirmed: Bool
+}
