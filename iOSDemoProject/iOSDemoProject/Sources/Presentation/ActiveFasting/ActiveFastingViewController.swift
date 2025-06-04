@@ -41,7 +41,6 @@ final class ActiveFastingViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureLayout()
-        configureAccessibilityIdentifier()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,20 +69,6 @@ final class ActiveFastingViewController: UIViewController {
 
 // MARK: - Private methods
 private extension ActiveFastingViewController {
-    func configureAccessibilityIdentifier() {
-        let mirror = Mirror(reflecting: self)
-        mirror.children.forEach { child in
-            guard
-                let view = child.value as? UIView,
-                let identifier = child.label,
-                view.accessibilityIdentifier == nil
-            else {
-                return
-            }
-            view.accessibilityIdentifier = "\(type(of: self)).\(identifier)"
-        }
-    }
-    
     func configureUI() {
         view.backgroundColor = .white
         

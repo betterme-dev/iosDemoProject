@@ -38,7 +38,6 @@ final class FastingDetailsViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureLayout()
-        configureAccessibilityIdentifier()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -67,20 +66,6 @@ final class FastingDetailsViewController: UIViewController {
 
 // MARK: - Private methods
 private extension FastingDetailsViewController {
-    func configureAccessibilityIdentifier() {
-        let mirror = Mirror(reflecting: self)
-        mirror.children.forEach { child in
-            guard
-                let view = child.value as? UIView,
-                let identifier = child.label,
-                view.accessibilityIdentifier == nil
-            else {
-                return
-            }
-            view.accessibilityIdentifier = "\(type(of: self)).\(identifier)"
-        }
-    }
-    
     func configureUI() {}
     
     func configureLayout() {}

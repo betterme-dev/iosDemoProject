@@ -59,7 +59,6 @@ private extension ListItemCell {
     func commonInit() {
         configureUI()
         configureLayout()
-        configureAccessibilityIdentifier()
     }
     
     func configureUI() {
@@ -124,14 +123,6 @@ private extension ListItemCell {
             make.leading.equalTo(iconImageViewBackground.snp.trailing).offset(12)
             make.centerY.equalToSuperview()
             make.trailing.lessThanOrEqualTo(chevronImageView.snp.leading).offset(-16)
-        }
-    }
-    
-    func configureAccessibilityIdentifier() {
-        let mirror = Mirror(reflecting: self)
-        mirror.children.forEach { child in
-            guard let view = child.value as? UIView, let identifier = child.label else { return }
-            view.accessibilityIdentifier = "\(type(of: self)).\(identifier)"
         }
     }
 }
